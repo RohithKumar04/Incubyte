@@ -33,10 +33,32 @@ class ApplicationTests {
 	}
 
 	@Test
-	void whenCommaSeparated_AddNumbers() {
+	void whenCommaSeparated_sum() {
 
 		int result=stringCalc.calculate("1,2");
 		Assertions.assertEquals(result, 3);
+
+	}
+
+	@Test
+	void splitByCommaOrNewLine_Sum() {
+
+		Assertions.assertEquals(stringCalc.calculate("1,2"), 3);
+
+		Assertions.assertEquals(stringCalc.calculate("1/n2"), 3);
+
+	}
+
+	@Test
+	void splitByCommaOrNewLine_AddNumbers_InvalidInput() {
+
+		Assertions.assertThrows(InvalidException.class, () -> {
+			stringCalc.calculate("/n1,2");
+		});
+
+		Assertions.assertThrows(InvalidException.class, () -> {
+			stringCalc.calculate("1,2/n");
+		});
 
 	}
 }
