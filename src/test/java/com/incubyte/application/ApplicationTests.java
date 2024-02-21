@@ -9,64 +9,63 @@ import org.springframework.boot.test.context.SpringBootTest;
 @SpringBootTest
 class ApplicationTests {
 
-	private StringCalc stringCalc;
+    private StringCalc stringCalc;
 
-	@BeforeEach
-	void setup() {
-		stringCalc = new StringCalc();
-	}
+    @BeforeEach
+    void setup() {
+        stringCalc=new StringCalc();
+    }
 
-	@Test
-	void whenEmpty_defaultToZero() {
+    @Test
+    void whenEmpty_defaultToZero() {
 
-		int result=stringCalc.calculate("");
-		Assertions.assertEquals(result, 0);
+        int result=stringCalc.calculate("");
+        Assertions.assertEquals(result,0);
 
-	}
+    }
 
-	@Test
-	void whenSizeIsOne_returnAsNumber() {
+    @Test
+    void whenSizeIsOne_returnAsNumber() {
 
-		int result=stringCalc.calculate("1");
-		Assertions.assertEquals(result, 1);
+        int result=stringCalc.calculate("1");
+        Assertions.assertEquals(result,1);
 
-	}
+    }
 
-	@Test
-	void whenCommaSeparated_sum() {
+    @Test
+    void whenCommaSeparated_sum() {
 
-		int result=stringCalc.calculate("1,2");
-		Assertions.assertEquals(result, 3);
+        int result=stringCalc.calculate("1,2");
+        Assertions.assertEquals(result,3);
 
-	}
+    }
 
-	@Test
-	void splitByCommaOrNewLine_Sum() {
+    @Test
+    void splitByCommaOrNewLine_Sum() {
 
-		Assertions.assertEquals(stringCalc.calculate("1,2"), 3);
+        Assertions.assertEquals(stringCalc.calculate("1,2"),3);
 
-		Assertions.assertEquals(stringCalc.calculate("1/n2"), 3);
+        Assertions.assertEquals(stringCalc.calculate("1/n2"),3);
 
-	}
+    }
 
-	@Test
-	void splitByCommaOrNewLine_AddNumbers_InvalidInput() {
+    @Test
+    void splitByCommaOrNewLine_AddNumbers_InvalidInput() {
 
-		Assertions.assertThrows(InvalidException.class, () -> {
-			stringCalc.calculate("/n1,2");
-		});
+        Assertions.assertThrows(InvalidException.class,() -> {
+            stringCalc.calculate("/n1,2");
+        });
 
-		Assertions.assertThrows(InvalidException.class, () -> {
-			stringCalc.calculate("1,2/n");
-		});
+        Assertions.assertThrows(InvalidException.class,() -> {
+            stringCalc.calculate("1,2/n");
+        });
 
-	}
+    }
 
-	@Test
-	void ignore1000_thenSum() {
+    @Test
+    void ignore1000_thenSum() {
 
-		int result = stringCalc.calculate("1000,2,3");
-
-		Assertions.assertEquals(result, 5);
-	}
+        int result=stringCalc.calculate("1000,2,3");
+        Assertions.assertEquals(result,5);
+    }
 }

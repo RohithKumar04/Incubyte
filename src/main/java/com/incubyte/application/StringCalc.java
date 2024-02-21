@@ -13,9 +13,9 @@ public class StringCalc {
             return sum;
         }
 
-        String[] individualNumbers = parseString(numbers);
+        String[] individualNumbers=parseString(numbers);
         for (String individualNumber : individualNumbers) {
-            sum += Integer.parseInt(individualNumber);
+            sum+=Integer.parseInt(individualNumber);
         }
 
         return sum;
