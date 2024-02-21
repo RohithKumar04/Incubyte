@@ -63,9 +63,10 @@ class ApplicationTests {
     }
 
     @Test
-    void ignore1000_thenSum() {
+    void ignoreGreaterThan1000_thenSum() {
 
-        int result=stringCalc.calculate("1000,2,3");
-        Assertions.assertEquals(result,5);
+        Assertions.assertEquals(stringCalc.calculate("10000,2,3"),5);
+        Assertions.assertEquals(stringCalc.calculate("10000000,2,3"),5);
+        Assertions.assertEquals(stringCalc.calculate("100000,2,3"),5);
     }
 }
