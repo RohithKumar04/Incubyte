@@ -61,4 +61,12 @@ class ApplicationTests {
 		});
 
 	}
+
+	@Test
+	void ignore1000_thenSum() {
+
+		int result = stringCalc.calculate("1000,2,3");
+
+		Assertions.assertEquals(result, 5);
+	}
 }
